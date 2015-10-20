@@ -13,7 +13,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+PROJECT_DIR = os.path.dirname(__file__)
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -22,8 +22,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #my_apps
+    #own_apps
     'landing',
+    'base',
+    'logsys',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -71,7 +73,6 @@ DATABASES = {
 }
 
 
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -82,6 +83,25 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+#STATIC_ROOT = os.path.join(PROJECT_DIR, '../static')
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_DIR, '../static'),
+)
+
+"""TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    "django.core.context_processors.request",
+    "base.context_processors.extra_context",
+)"""
+
+
+AUTH_USER_MODEL = 'logsys.User'
