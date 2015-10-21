@@ -1,0 +1,23 @@
+*.pyc
+*.fuse*
+*~
+*.save
+*.Trash*
+*.DS*
+*._.DS*
+*._.*
+*.apdisk
+*._*
+*.orig*
+
+# Ignore PyCharm files
+.idea*
+
+# Ignore local settings
+./bsg/local
+
+# Ignore temp media files
+./asfzdb/media/*
+
+./dist
+./MANIFEST
