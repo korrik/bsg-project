@@ -29,6 +29,7 @@ INSTALLED_APPS = (
     'landing',
     'base',
     'logsys',
+    'extdirect.django'
 )
 
 MIDDLEWARE_CLASSES = (
