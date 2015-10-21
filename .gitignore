@@ -14,10 +14,10 @@
 .idea*
 
 # Ignore local settings
-./bsg/local
+bsg/local*
 
-# Ignore temp media files
-./asfzdb/media/*
+# Ignore extjs lib
+static/extjs
 
 ./dist
 ./MANIFEST
