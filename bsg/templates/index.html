@@ -6,11 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>edSim</title>
-    <link rel="shortcut icon" href="{{ STATIC_URL }}resources/images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="{{ STATIC_URL }}resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}resources/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
-    <link rel="stylesheet" href="{{ STATIC_URL }}resources/css/normalize.css" charset="utf-8">
-    <link rel="stylesheet" href="{{ STATIC_URL }}resources/css/style.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="{% static 'resources/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'resources/css/font-awesome.min.css' %}" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="{% static 'resources/css/normalize.css' %}" charset="utf-8">
+    <link rel="stylesheet" href="{% static 'resources/css/style.css' %}" media="screen" title="no title" charset="utf-8">
 </head>
 
 <body>
@@ -138,8 +137,8 @@
         </footer>
     </div>
 
-    <script src="{{ STATIC_URL }}resources/js/jquery-2.1.4.min.js"></script>
-    <script src="{{ STATIC_URL }}resources/js/bootstrap.min.js"></script>
+    <script src="{% static 'resources/js/jquery-2.1.4.min.js' %}"></script>
+    <script src="{% static 'resources/js/bootstrap.min.js' %}"></script>
 
 
 </body>

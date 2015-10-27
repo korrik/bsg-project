@@ -2,7 +2,7 @@ Ext.define('Bsg.view.Viewport', {
     extend: 'Ext.container.Viewport',
     alias: 'widget.Viewport',
     layout: 'fit',
-    
+
     requires: [
 
     ],
@@ -21,7 +21,7 @@ Ext.define('Bsg.view.Viewport', {
                 xtype: 'label',
                 cls: 'label-system',
                 margin: '0 0 0 20',
-                text: 'BSG',
+                html: 'ed<span class="main_title">Sim</span>',
             }, '->', {
                 xtype: 'button',
                 text: 'Пользователь: ',

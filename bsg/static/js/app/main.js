@@ -10,16 +10,18 @@ Ext.Loader.setPath('Books', '/static/js/app');
 Ext.require([
 
 ]);
+
 Ext.application({
     name: 'Bsg',
 
     controllers: [
-        'ViewController'
+        'ViewController',
     ],
+
 
     appFolder: '/static/js/app',
 
-    launch: function(){
+    launch: function() {
         Ext.create('Bsg.view.Viewport').show();
     }
 });

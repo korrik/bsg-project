@@ -18,3 +18,6 @@ def index(request):
 def main(request):
     # TODO: Проверка на авторизацию
     return render_to_response('main.html', context_instance=RequestContext(request))
+
+def login(request):
+    return render_to_response('login.html', context_instance=RequestContext(request))

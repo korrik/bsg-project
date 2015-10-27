@@ -1,19 +1,16 @@
-<!DOCTYPE html>
+<!DOCTYPE html>{% load staticfiles %}
 <html>
 	<head>
 		<meta http-equiv="content -type" content="text/html; charset=utf-8">
-		<title>СФЗ</title>
-
-		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}ext-5.1.1/build/packages/ext-theme-crisp/build/resources/ext-theme-crisp-all.css">
-		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}js/resources/css/font-awesome.min.css" />
-
-        <script type="text/javascript" src="{{ STATIC_URL }}extjs/build/ext-all.js"></script>
-{#		<script type="text/javascript" src="/remoting/provider.js"></script>#}
-		<script type="text/javascript" src="{{ STATIC_URL }}js/app/login.js"></script>
-
-		<script type="text/javascript" src="{{ STATIC_URL }}js/app/locale/ext-lang-ru.js"></script>
-
+		<title>Авторизация</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'extjs/build/packages/ext-theme-crisp/build/resources/ext-theme-crisp-all.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'resources/css/font-awesome.min.css' %}" />
 	</head>
 	<body>
+
+		<script type="text/javascript" src="{% static 'extjs/build/ext-all.js' %}"></script>
+{#	<script type="text/javascript" src="/remoting/provider.js"></script>  #}
+		<script type="text/javascript" src="{% static 'js/app/login.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/app/locale/ext-lang-ru.js' %}"></script>
 	</body>
 </html>

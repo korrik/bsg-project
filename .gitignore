@@ -13,6 +13,8 @@
 # Ignore PyCharm files
 .idea*
 
+settings.py
+
 # Ignore local settings
 bsg/local*
 
