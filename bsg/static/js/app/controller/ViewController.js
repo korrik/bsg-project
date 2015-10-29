@@ -28,9 +28,9 @@ Ext.define('Bsg.controller.ViewController', {
         console.log(title)
         console.log(url)
 
-        var vp = Ext.ComponentQuery.query('Viewport')[0];
-        var mainpanel = vp.down('#itemId_mainpanel');
-        mainpanel.add({xtype: BsgMenu.getXTypeByUrl(url)});
+        //var vp = Ext.ComponentQuery.query('Viewport')[0];
+        //var mainpanel = vp.down('#itemId_mainpanel');
+        //mainpanel.add({xtype: BsgMenu.getXTypeByUrl(url)});
 
     }
 
