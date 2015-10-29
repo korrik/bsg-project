@@ -25,6 +25,7 @@ Ext.define('Bsg.view.Viewport', {
             }, '->', {
                 xtype: 'button',
                 text: 'Пользователь: ',
+                glyph: 'xf007@FontAwesome',
                 //iconCls: 'user-gray', Вставить иконку юзера из шрифта!
                 itemId: 'itemId_labeluser',
                 disabled: true,
@@ -42,7 +43,20 @@ Ext.define('Bsg.view.Viewport', {
                 //iconCls: 'logout', Добавить иконку выход!
                 scope: this,
                 text: 'Выйти',
-                handler: function () {}
+                handler: function () {
+                    Ext.MessageBox.confirm('Подтверждение', 'Вы уверены, что хотите выйти?', showResult);
+                        function showResult(btn){ if (btn == 'yes')  {
+                            var request = null;
+                            provider.methods.logout_user(request, function(resp){
+                                if (resp.success){
+                                    window.location.reload();
+                                } else {
+                                    window.location.href = '/index.html'
+                                }
+                            })
+                        }}
+
+                }
             }]
         });
 
@@ -84,6 +98,12 @@ Ext.define('Bsg.view.Viewport', {
             }, me.mainPanel]
         });
 
+        var request = null;
+        provider.methods.get_user(request, function(resp){
+            if (resp.success) {
+                me.toolbar.down('#itemId_username').setText(resp.username)
+            }
+        });
 
 
 

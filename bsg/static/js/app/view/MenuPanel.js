@@ -1,7 +1,13 @@
 Ext.define('BsgMenu', {
     singleton: true,
     tables: [
-        {title: 'Главная',  url:'1', xtype: ''},
+        {title: 'Главная',  url:'1', xtype: 'MainContainer'},
+        {title: 'Компания',  url:'2', xtype: ''},
+        {title: 'Продукт',  url:'3', xtype: ''},
+        {title: 'Финансы',  url:'4', xtype: ''},
+        {title: 'Маркетинг',  url:'5', xtype: ''},
+        {title: 'HR',  url:'6', xtype: ''},
+        {title: 'Производство',  url:'7', xtype: ''}
 
     ],
 
@@ -59,7 +65,7 @@ Ext.define('Bsg.view.MenuPanel', {
             },
             listeners: {
                 scope: this,
-                //viewready: this.onViewReady
+                viewready: this.onViewReady
             },
             trackOver: true,
             cls: 'table-list',

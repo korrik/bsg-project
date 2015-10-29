@@ -24,6 +24,13 @@ Ext.define('Bsg.controller.ViewController', {
      * @param url
      */
     openTab : function(panel, title, url) {
+        console.log(panel)
+        console.log(title)
+        console.log(url)
+
+        var vp = Ext.ComponentQuery.query('Viewport')[0];
+        var mainpanel = vp.down('#itemId_mainpanel');
+        mainpanel.add({xtype: BsgMenu.getXTypeByUrl(url)});
 
     }
 

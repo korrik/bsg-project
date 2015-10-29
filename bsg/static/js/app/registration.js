@@ -1,15 +1,15 @@
 Ext.onReady(function(){
-    var formLogin = Ext.create('Ext.form.Panel', {
+    var formResitr = Ext.create('Ext.form.Panel', {
         renderTo: Ext.getBody(),
         bodyPadding: 10,
         width: 350,
         margin: '30 0 0 0',
-        title: 'Вход',
+        title: 'Регистрация',
         header: {
             titleAlign: 'center'
         },
         api: {
-            submit: 'provider.methods.login_user'
+            submit: 'provider.methods.create_user'
         },
 
         defaultType: 'textfield',
@@ -18,6 +18,19 @@ Ext.onReady(function(){
             name: 'username',
             allowBlank: false
         },{
+            fieldLabel: 'Имя',
+            name: 'first_name',
+            allowBlank: false
+        },{
+            fieldLabel: 'Фамилия',
+            name: 'last_name',
+            allowBlank: false
+        },{
+            fieldLabel: 'E-mail',
+            name: 'email',
+            allowBlank: false,
+            vtype: 'email'
+        },{
             fieldLabel: 'Пароль',
             name: 'password',
             allowBlank: false,
@@ -25,7 +38,7 @@ Ext.onReady(function(){
         }],
 
         buttons: [{
-            text: 'Войти',
+            text: 'Зарегистрироваться',
             formBind: false,
             disabled: false,
             handler: function() {
@@ -33,7 +46,14 @@ Ext.onReady(function(){
                 if (form.isValid()) {
                     form.submit({
                         success: function(form, o) {
-                            window.location.href = '/main.html';
+                            Ext.Msg.show({
+                                msg: 'Вы успешно зарегистрировались!',
+                                buttons: Ext.Msg.OK,
+                                icon: Ext.MessageBox.INFO,
+                                fn: function(){
+                                    window.location.href = '/login.html'
+                                }
+                            });
                         },
                         failure: function(form, o) {
                             Ext.Msg.alert('Failed', o.result.msg);
@@ -57,7 +77,7 @@ Ext.onReady(function(){
             },
             frame: false,
             border: false,
-            items: [formLogin]
+            items: [formResitr]
         }]
     }).show();
 });
