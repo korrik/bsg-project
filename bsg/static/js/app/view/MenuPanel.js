@@ -92,7 +92,7 @@ Ext.define('Bsg.view.MenuPanel', {
         return this.view.getSelectionModel().getSelection()[0] || false;
     },
 
-    
+
     setDeselectAll: function() {
         this.view.getSelectionModel().deselectAll();
     },

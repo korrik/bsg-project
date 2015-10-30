@@ -1,0 +1,86 @@
+@import url(http://webfonts.ru/import/clearsans.css);
+@import url(https://fonts.googleapis.com/css?family=Roboto&subset=latin,cyrillic);
+
+@font-face {
+  font-family: 'DIN-Pro';
+  src: url(../fonts/DINPro-Bold_13934.ttf);
+}
+
+.loginform {
+  padding-bottom: 15px;
+  background: #fff;
+  border-radius: 4px;
+  text-align: center;
+  border: 1px solid #eee;
+  border-top: 4px solid rgb(10, 180, 218);
+}
+
+.x-panel-body-default {
+  background: #2f4050;
+  border: 0;
+}
+
+.panel-top {
+  text-align: center;
+  border: 0;
+  padding-top: 10px;
+}
+
+.label-system {
+  margin-top: 45px;
+  font-size: 54px;
+  font-family: 'DIN-Pro';
+  color: #fff;
+}
+
+.x-panel-body .x-panel-body-default .x-panel-body-default {
+  top:0;
+}
+
+.main_title {
+  color: rgb(10, 180, 218);
+}
+
+.x-panel-header-default,
+.x-autocontainer-outerCt,
+.x-toolbar-footer {
+  background: #fff;
+  border: 0;
+}
+
+
+.x-form-text-default {
+  border-radius: 3px;
+  padding: 10px;
+  font-family: 'Clear Sans';
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.x-btn-default-small {
+  background: rgb(10, 180, 218);
+  border: 0;
+}
+
+.x-form-trigger-wrap-default {
+  border-radius: 4px;
+}
+
+.input {
+  width: 300px;
+  margin: 10px auto;
+  border-radius: 4px !important;
+}
+
+.x-toolbar-footer .x-toolbar-item {
+  left: 130px !important;
+  margin-bottom: 10px;
+}
+
+#enter span{
+  font-family: 'Clear Sans';
+  font-weight: bold;
+  color:#fff;
+  font-size: 16px;
+  padding: 2px 20px;
+}

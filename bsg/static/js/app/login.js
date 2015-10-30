@@ -1,10 +1,23 @@
 Ext.onReady(function(){
+
+    var panel = Ext.create('Ext.container.Container', {
+          layout: 'fit',
+          region: 'west',
+          cls: 'panel-top',
+          renderTo :  Ext.getBody(),
+          items: {
+              xtype: 'label',
+              cls: 'label-system',
+              html: 'ed<span class="main_title">Sim</span>',
+          }
+     });
+
     var formLogin = Ext.create('Ext.form.Panel', {
         renderTo: Ext.getBody(),
         bodyPadding: 10,
-        width: 350,
-        margin: '30 0 0 0',
-        title: 'Вход',
+        cls: 'loginform',
+        width: 460,
+        margin: '130 0 0 0',
         header: {
             titleAlign: 'center'
         },
@@ -14,11 +27,13 @@ Ext.onReady(function(){
 
         defaultType: 'textfield',
         items: [{
-            fieldLabel: 'Логин',
+            emptyText: 'Логин',
+            cls: 'input',
             name: 'username',
             allowBlank: false
         },{
-            fieldLabel: 'Пароль',
+            emptyText: 'Пароль',
+            cls: 'input',
             name: 'password',
             allowBlank: false,
             inputType: 'password'
@@ -26,6 +41,8 @@ Ext.onReady(function(){
 
         buttons: [{
             text: 'Войти',
+            cls: 'enter',
+            id:'enter',
             formBind: false,
             disabled: false,
             handler: function() {
@@ -60,4 +77,5 @@ Ext.onReady(function(){
             items: [formLogin]
         }]
     }).show();
+
 });

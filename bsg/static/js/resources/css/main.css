@@ -11,11 +11,33 @@ html, body {
 }
 
 body.x-border-layout-ct, div.x-border-layout-ct {
-  background: #EDECEC;
+  background: #fafafa;
+}
+
+.x-btn-inner-default-toolbar-small {
+  font-family: 'Clear Sans';
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.x-btn-default-toolbar-small {
+  background-color: transparent;
+  border: 0;
+}
+
+.x-btn-default-toolbar-small:hover {
+  background-color: transparent;
+  border: 0;
+}
+
+.x-btn-icon-el-default-toolbar-small.x-btn-glyph {
+  opacity: 1;
+  color:#fff;
 }
 
 .label-system {
-  font-size: 28px;
+  font-size: 36px;
   font-family: 'DIN-Pro';
   color: #fff;
 }
@@ -24,14 +46,18 @@ body.x-border-layout-ct, div.x-border-layout-ct {
   color: rgb(10, 180, 218);
 }
 
-
-.button-disable {
-    opacity: 1;
-    cursor: default;
+.button-disable .x-btn-inner {
+  color:#fff;
 }
 
-.button-disable .x-btn-inner {
-    color: black;
+
+.x-btn.x-btn-disabled.x-btn-default-toolbar-small {
+background: transparent;
+opacity: 1;
+}
+
+.button-disable {
+    cursor: default;
 }
 
 .table-list {
@@ -55,32 +81,39 @@ body.x-border-layout-ct, div.x-border-layout-ct {
 .x-toolbar-default {
   background: #2e3537;
   border: 0;
-  padding: 5px 0;
 }
 
 .table-list-item {
-    margin-top: 3px;
-    padding: 7px 15px;
+    padding: 10px 15px;
     font-size: 14px;
     line-height: 20px;
-    color: #fff;
+    color: #a7b1c2;
     cursor: pointer;
     font-family: 'DIN-Pro';
-    transition: 0.3s;
 }
 
-.table-list-item:hover {
-    background: rgba(37, 118, 165, 0.6);
-    font-weight: bold;
-}
-
-.table-list .x-item-selected {
-    padding: 7px 11px;
+.table-list .x-item-selected, .x-item-selected:hover {
+    padding: 10px 11px;
     border-left: 4px solid #ED5454;
     font-weight: bold;
     color: #fff;
+    background: #293846;
+}
+
+.x-toolbar-default .x-toolbar-separator-horizontal {
+  border: 1px solid #fff;
+  height: 25px;
+}
+
+.panel-top {
+  text-align: center !important;
+  background: #ccc;
 }
 
 .table-list-item-hover {
-    background-color: #eee;
+    background-color: #5e748a;
+}
+
+.x-splitter {
+  display: none;
 }

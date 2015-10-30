@@ -74,7 +74,7 @@ SESSION_SAVE_EVERY_REQUEST = False
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bsg',
+        'NAME': 'bsg_db',
         'USER': 'root',
         'PASSWORD': 'A0895848298a',
         'HOST': '127.0.0.1',

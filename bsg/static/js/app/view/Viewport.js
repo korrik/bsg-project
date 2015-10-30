@@ -14,7 +14,7 @@ Ext.define('Bsg.view.Viewport', {
 
         me.toolbar = Ext.create('Ext.toolbar.Toolbar', {
             region: 'north',
-            height: 50,
+            height: 55,
             itemId: 'itemId_view_toolbar',
             scope: this,
             items: [{
@@ -22,7 +22,7 @@ Ext.define('Bsg.view.Viewport', {
                 cls: 'label-system',
                 margin: '0 0 0 20',
                 html: 'ed<span class="main_title">Sim</span>',
-            }, '->', {
+            }, '->', /*{
                 xtype: 'button',
                 text: 'Пользователь: ',
                 glyph: 'xf007@FontAwesome',
@@ -31,16 +31,19 @@ Ext.define('Bsg.view.Viewport', {
                 disabled: true,
                 border: false,
                 disabledCls: 'button-disable'
-            }, {
+            }*/, {
                 xtype: 'button',
                 text: me.usernamedefault,
                 itemId: 'itemId_username',
                 disabled: true,
+                glyph: 'xf007@FontAwesome',
+                iconCls:'user-gray',
                 border: false,
                 disabledCls: 'button-disable'
             }, '-', {
                 xtype: 'button',
-                //iconCls: 'logout', Добавить иконку выход!
+                glyph: 'xf08b@FontAwesome',
+                iconCls: 'logout',
                 scope: this,
                 text: 'Выйти',
                 handler: function () {
