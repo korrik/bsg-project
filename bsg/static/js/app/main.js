@@ -9,6 +9,7 @@ Ext.Loader.setPath('Bsg', '/static/js/app');
 //Все контейнеры верхнего уровня необходимо объявить тут!
 Ext.require([
     'Bsg.view.main.MainContainer',
+    'Bsg.view.company.CompanyContainer'
 ]);
 
 Ext.application({
@@ -16,7 +17,8 @@ Ext.application({
 
     controllers: [
         'ViewController',
-        'MainController'
+        'MainController',
+        'CompanyController',
     ],
 
 

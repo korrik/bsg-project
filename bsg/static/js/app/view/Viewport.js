@@ -71,13 +71,25 @@ Ext.define('Bsg.view.Viewport', {
             autoScroll: true
         });
 
-        me.mainPanel = Ext.create('Ext.panel.Panel',{
-            itemId: 'itemId_mainpanel',
+        me.content = Ext.create('Ext.panel.Panel',{
+            itemId: 'itemId_contentpanel',
             region: 'center',
-            layout: 'border',
+            layout: {
+                type: 'card',
+                deferredRender: true
+            },
             header: false,
             margin: '0 5 5 0',
-            minWidth: 400
+            minWidth: 400,
+            items: [
+                {
+                    xtype: 'maincontainer',
+                    itemId: 'itemId_maincontainer'
+                },{
+                    xtype: 'companycontainer',
+                    itemId: 'itemId_companycontainer'
+                }
+            ]
         });
 
         Ext.apply(me, {
@@ -95,7 +107,7 @@ Ext.define('Bsg.view.Viewport', {
                 collapsible: true,
                 width: 240,
                 items: [me.menuPanel]
-            }, me.mainPanel]
+            }, me.content]
         });
 
         var request = null;

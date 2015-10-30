@@ -1,12 +1,13 @@
-Ext.define('Bsg.view.main.MainContainer', {
+Ext.define('Bsg.view.company.CompanyContainer', {
 
     extend: 'Ext.container.Container',
 
     requires: [],
 
-    xtype: 'maincontainer',
+    xtype: 'companycontainer',
 
-    alias: 'widget.MainContainer',
+    alias: 'widget.CompanyContainer',
+
 
     initComponent: function(){
 
@@ -14,7 +15,7 @@ Ext.define('Bsg.view.main.MainContainer', {
 
         this.autoScroll = true;
 
-        this.html = 'Главная';
+        this.html = 'Компания';
 
         this.items = [
 

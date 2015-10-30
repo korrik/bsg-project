@@ -66,15 +66,17 @@ body.x-border-layout-ct, div.x-border-layout-ct {
     color: #fff;
     cursor: pointer;
     font-family: 'DIN-Pro';
-    border-left: 4px solid #ED5454;
     transition: 0.3s;
 }
 
 .table-list-item:hover {
-  background: rgba(37, 118, 165, 0.6);
+    background: rgba(37, 118, 165, 0.6);
+    font-weight: bold;
 }
 
 .table-list .x-item-selected {
+    padding: 7px 11px;
+    border-left: 4px solid #ED5454;
     font-weight: bold;
     color: #fff;
 }

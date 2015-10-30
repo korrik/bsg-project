@@ -1,13 +1,13 @@
 Ext.define('BsgMenu', {
     singleton: true,
     tables: [
-        {title: 'Главная',  url:'1', xtype: 'MainContainer'},
-        {title: 'Компания',  url:'2', xtype: ''},
-        {title: 'Продукт',  url:'3', xtype: ''},
-        {title: 'Финансы',  url:'4', xtype: ''},
-        {title: 'Маркетинг',  url:'5', xtype: ''},
-        {title: 'HR',  url:'6', xtype: ''},
-        {title: 'Производство',  url:'7', xtype: ''}
+        {title: 'Главная', icon: 'fa fa-home', url:'itemId_maincontainer', xtype: 'MainContainer'},
+        {title: 'Компания', icon: 'fa fa-building-o',  url:'itemId_companycontainer', xtype: 'CompanyContainer'},
+        {title: 'Продукт', icon: 'fa fa-archive', url:'3', xtype: ''},
+        {title: 'Финансы', icon: 'fa fa-money', url:'4', xtype: ''},
+        {title: 'Маркетинг', icon: 'fa fa-pie-chart', url:'5', xtype: ''},
+        {title: 'HR', icon: 'fa fa-users', url:'6', xtype: ''},
+        {title: 'Производство', icon: 'fa fa-cubes', url:'7', xtype: ''}
 
     ],
 
@@ -47,7 +47,7 @@ Ext.define('Bsg.view.MenuPanel', {
     createView: function(){
         Ext.define('MenuModel', {
             extend: 'Ext.data.Model',
-            fields: ['title', 'url']
+            fields: ['title', 'url', 'icon']
         });
 
         this.view = Ext.create('Ext.view.View', {
@@ -71,7 +71,7 @@ Ext.define('Bsg.view.MenuPanel', {
             cls: 'table-list',
             itemSelector: '.table-list-item',
             overItemCls: 'table-list-item-hover',
-            tpl: '<tpl for="."><div class="table-list-item">{title}</div></tpl>'  //NOTE: {title} - same as 'title' field in model
+            tpl: '<tpl for="."><div class="table-list-item"><i class="{icon}"></i>&nbsp;&nbsp;&nbsp;&nbsp;{title}</div></tpl>'  //NOTE: {title} - same as 'title' field in model
         });
         return this.view;
     },
@@ -103,9 +103,8 @@ Ext.define('Bsg.view.MenuPanel', {
      */
     onSelectionChange: function(){
         var rec = this.getSelectedItem();
-        this.setDeselectAll();
         if (rec) {
-            this.fireEvent('itemselect', this, rec.get('title'), rec.get('url'));
+            this.fireEvent('itemselect', rec);
         }
     }
 });

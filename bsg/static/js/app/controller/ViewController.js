@@ -5,11 +5,18 @@ Ext.define('Bsg.controller.ViewController', {
     models  : [],
     views   : ['MenuPanel', 'Viewport'],
 
+    refs: [
+        {
+            ref: 'Viewport',
+            selector: 'viewport'
+        }
+    ],
+
     init    : function() {
 
         this.control({
             'MenuPanel' : {
-                itemselect: this.openTab
+                itemselect: this.openContent
             },
             'Viewport': {
 
@@ -23,10 +30,12 @@ Ext.define('Bsg.controller.ViewController', {
      * @param title
      * @param url
      */
-    openTab : function(panel, title, url) {
-        console.log(panel)
-        console.log(title)
-        console.log(url)
+    openContent : function(record) {
+        if (record) {
+            this.getViewport().content.getLayout().setActiveItem(record.get('url'))
+        }
+
+        //this.getContent().getLayout().setActiveItem(recods.get('url'));
 
         //var vp = Ext.ComponentQuery.query('Viewport')[0];
         //var mainpanel = vp.down('#itemId_mainpanel');
