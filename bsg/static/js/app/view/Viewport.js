@@ -40,8 +40,9 @@ Ext.define('Bsg.view.Viewport', {
                 iconCls:'user-gray',
                 border: false,
                 disabledCls: 'button-disable'
-            }, '-', {
+            }, {
                 xtype: 'button',
+                cls: 'logout-button',
                 glyph: 'xf08b@FontAwesome',
                 iconCls: 'logout',
                 scope: this,

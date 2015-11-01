@@ -78,9 +78,23 @@ opacity: 1;
   width: 215px;
 }
 
+.logout-button,
+.logout-button:hover {
+  border-left: 2px solid #fff;
+  border-radius: 0;
+  padding-left: 15px;
+}
+
+.logout-button:focus,
+.logout-button:active {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
 .x-toolbar-default {
   background: #2e3537;
   border: 0;
+  padding: 0;
 }
 
 .table-list-item {

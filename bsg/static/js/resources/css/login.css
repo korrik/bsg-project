@@ -11,8 +11,11 @@
   background: #fff;
   border-radius: 4px;
   text-align: center;
-  border: 1px solid #eee;
   border-top: 4px solid rgb(10, 180, 218);
+}
+
+.loginform .x-autocontainer-outerCt {
+  padding-top: 5px;
 }
 
 .x-panel-body-default {
@@ -63,7 +66,7 @@
 }
 
 .x-form-trigger-wrap-default {
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 .input {
@@ -72,15 +75,33 @@
   border-radius: 4px !important;
 }
 
-.x-toolbar-footer .x-toolbar-item {
-  left: 130px !important;
-  margin-bottom: 10px;
+.full-button {
+  display: inline-block;
+  margin-left: 75px !;
 }
 
-#enter span{
+.full-button span{
   font-family: 'Clear Sans';
-  font-weight: bold;
+  font-weight: 400;
   color:#fff;
   font-size: 16px;
-  padding: 2px 20px;
+  padding: 2px 5px;
+}
+
+.button-simple {
+  background: transparent;
+}
+
+.button-simple span {
+  color: rgb(10, 180, 218);
+  font-family: 'Clear Sans';
+  font-size: 14px;
+}
+
+.button-simple:hover,
+.button-simple:active,
+.button-simple:focus {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
 }

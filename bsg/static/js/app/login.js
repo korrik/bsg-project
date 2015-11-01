@@ -16,15 +16,12 @@ Ext.onReady(function(){
         renderTo: Ext.getBody(),
         bodyPadding: 10,
         cls: 'loginform',
-        width: 460,
-        margin: '130 0 0 0',
-        header: {
-            titleAlign: 'center'
-        },
+        width: 360,
+        margin: '150 0 0 0',
+        buttonAlign: 'left',
         api: {
             submit: 'provider.methods.login_user'
         },
-
         defaultType: 'textfield',
         items: [{
             emptyText: 'Логин',
@@ -41,8 +38,8 @@ Ext.onReady(function(){
 
         buttons: [{
             text: 'Войти',
-            cls: 'enter',
-            id:'enter',
+            cls: 'full-button',
+            margin: '0 0 0 24',
             formBind: false,
             disabled: false,
             handler: function() {
@@ -58,6 +55,14 @@ Ext.onReady(function(){
                     });
                 }
             }
+        }, {
+          text: 'Регистрация',
+          formBind: false,
+          disabled: false,
+          cls: 'button-simple',
+          handler: function () {
+            window.location.href = '/registration.html'
+          }
         }]
     });
 

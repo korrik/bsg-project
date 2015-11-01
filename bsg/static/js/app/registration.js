@@ -1,44 +1,67 @@
 Ext.onReady(function(){
+    var panel = Ext.create('Ext.container.Container', {
+          layout: 'fit',
+          region: 'west',
+          cls: 'panel-top',
+          renderTo :  Ext.getBody(),
+          items: {
+              xtype: 'label',
+              cls: 'label-system',
+              html: 'ed<span class="main_title">Sim</span>',
+          }
+     });
+
     var formResitr = Ext.create('Ext.form.Panel', {
         renderTo: Ext.getBody(),
         bodyPadding: 10,
-        width: 350,
-        margin: '30 0 0 0',
-        title: 'Регистрация',
-        header: {
-            titleAlign: 'center'
-        },
+        width: 360,
+        cls: 'loginform',
+        margin: '150 0 0 0',
+        buttonAlign: 'left',
         api: {
             submit: 'provider.methods.create_user'
         },
 
         defaultType: 'textfield',
         items: [{
-            fieldLabel: 'Логин',
+            emptyText: 'Логин',
+            cls: 'input',
             name: 'username',
             allowBlank: false
         },{
-            fieldLabel: 'Имя',
+            emptyText: 'Имя',
+            cls: 'input',
             name: 'first_name',
             allowBlank: false
         },{
-            fieldLabel: 'Фамилия',
+            emptyText: 'Фамилия',
+            cls: 'input',
             name: 'last_name',
             allowBlank: false
         },{
-            fieldLabel: 'E-mail',
+            emptyText: 'E-mail',
+            cls: 'input',
             name: 'email',
             allowBlank: false,
             vtype: 'email'
         },{
-            fieldLabel: 'Пароль',
+            emptyText: 'Пароль',
+            cls: 'input',
             name: 'password',
             allowBlank: false,
             inputType: 'password'
-        }],
+        },/* {
+            emptyText: 'Повторите пароль',
+            cls: 'input',
+            name: 'password2',
+            allowBlank: false,
+            inputType: 'password'
+        }*/],
 
         buttons: [{
             text: 'Зарегистрироваться',
+            cls: 'full-button',
+            margin: '0 0 0 24',
             formBind: false,
             disabled: false,
             handler: function() {
@@ -61,6 +84,14 @@ Ext.onReady(function(){
                     });
                 }
             }
+        }, {
+          text: 'Войти',
+          formBind: false,
+          disabled: false,
+          cls: 'button-simple',
+          handler: function () {
+            window.location.href = '/login.html'
+          }
         }]
     });
 
