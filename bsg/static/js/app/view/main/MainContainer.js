@@ -2,7 +2,7 @@ Ext.define('Bsg.view.main.MainContainer', {
 
     extend: 'Ext.container.Container',
 
-    requires: [],
+    requires: ['Bsg.view.main.MainDashboard'],
 
     xtype: 'maincontainer',
 
@@ -14,10 +14,12 @@ Ext.define('Bsg.view.main.MainContainer', {
 
         this.autoScroll = true;
 
-        this.html = 'Главная';
-
         this.items = [
-
+            {
+                itemId: 'itemId_mainDashboard',
+                xtype: 'maindashboard',
+                region: 'center'
+            }
         ];
 
         this.callParent();

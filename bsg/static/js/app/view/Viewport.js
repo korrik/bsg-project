@@ -22,16 +22,7 @@ Ext.define('Bsg.view.Viewport', {
                 cls: 'label-system',
                 margin: '0 0 0 20',
                 html: 'ed<span class="main_title">Sim</span>',
-            }, '->', /*{
-                xtype: 'button',
-                text: 'Пользователь: ',
-                glyph: 'xf007@FontAwesome',
-                //iconCls: 'user-gray', Вставить иконку юзера из шрифта!
-                itemId: 'itemId_labeluser',
-                disabled: true,
-                border: false,
-                disabledCls: 'button-disable'
-            }*/, {
+            }, '->', {
                 xtype: 'button',
                 text: me.usernamedefault,
                 itemId: 'itemId_username',
