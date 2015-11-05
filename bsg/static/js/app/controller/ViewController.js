@@ -3,7 +3,9 @@ Ext.define('Bsg.controller.ViewController', {
 
     stores  : [],
     models  : [],
-    views   : ['MenuPanel', 'Viewport'],
+    views   : ['MenuPanel', 'Viewport',
+    //'UserPanel'
+  ],
 
     refs: [
         {
@@ -20,7 +22,10 @@ Ext.define('Bsg.controller.ViewController', {
             },
             'Viewport': {
 
-            }
+            },
+            /*'UserPanel': {
+
+            },*/
         });
     },
 

@@ -50,7 +50,11 @@ Ext.onReady(function(){
                             window.location.href = '/main.html';
                         },
                         failure: function(form, o) {
-                            Ext.Msg.alert('Failed', o.result.msg);
+                            Ext.Msg.show({
+                                title: 'Ошибка',
+                                msg: 'Неправильные имя пользователя и/или пароль',
+                                cls: 'popup',
+                            });
                         }
                     });
                 }
