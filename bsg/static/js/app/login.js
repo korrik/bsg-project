@@ -38,6 +38,7 @@ Ext.onReady(function(){
 
         buttons: [{
             text: 'Войти',
+            xtype: 'button',
             cls: 'full-button',
             margin: '0 0 0 24',
             formBind: false,
