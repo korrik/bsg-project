@@ -6,12 +6,13 @@
   src: url(../fonts/DINPro-Bold_13934.ttf);
 }
 
-html, body {
+html, body, .x-body {
   font-family: 'Clear Sans';
 }
 
-body.x-border-layout-ct, div.x-border-layout-ct {
-  background: #fafafa;
+body.x-border-layout-ct, div.x-border-layout-ct,
+.x-border-layout-ct {
+  background: #f3f3f4;
 }
 
 .x-btn-inner-default-toolbar-small {
@@ -74,10 +75,6 @@ opacity: 1;
   outline: 0 !important;
 }
 
-.x-panel {
-  width: 215px;
-}
-
 .logout-button,
 .logout-button:hover {
   border-left: 2px solid #fff;
@@ -130,4 +127,106 @@ opacity: 1;
 
 .x-splitter {
   display: none;
+}
+
+.x-dashboard-column-first {
+  padding-right: 20px;
+  padding-left: 15px;
+}
+
+.dashboard-area {
+  margin-top: 15px;
+}
+
+.x-panel-body-default {
+  background: transparent;
+}
+
+.x-dashboard-panel  {
+  border-radius: 0;
+}
+
+.x-panel .x-panel-header-default-framed-top {
+  background: #fff;
+  border-radius: 0;
+  border-top: 3px solid rgba(41, 56, 70, 0.15);
+  border-bottom: 1px solid #eee;
+}
+
+.x-grid-header-ct {
+  border: 0;
+}
+
+.x-panel-body-default-framed {
+  border: 0;
+  padding: 10px;
+}
+
+.x-column-header-last {
+  border: 0;
+}
+
+.x-panel-default-framed {
+  border: 0;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.x-panel-header-default-framed {
+  border: 0;
+}
+
+.x-panel-header-title-default-framed {
+  font-family: 'Clear Sans';
+  color: #2f4050;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.x-column-header {
+  font-family: 'Clear Sans';
+  font-weight: 500;
+}
+
+.x-grid-item {
+  font-family: 'Clear Sans';
+}
+
+.x-toolbar-footer {
+  background: none;
+}
+
+.full-button {
+  padding: 5px;
+  background-color: #0ab4da;
+  border: 0;
+}
+
+.full-button span {
+  font-family: 'Clear Sans';
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.outer {
+  color: #2e3537;
+  padding: 5px 0;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 600;
+  background: #fff;
+  text-transform: uppercase;
+}
+
+.outer span{
+  margin: 0 5px;
+}
+
+.outer span:nth-child(2) {
+  background: #2e3537;
+  padding: 4px 5px;
+  color: #fff;
+  margin: 0;
+  border-radius: 0 3px 3px 0;
+  border: 1px solid #fff;
+  line-height: normal;
 }
