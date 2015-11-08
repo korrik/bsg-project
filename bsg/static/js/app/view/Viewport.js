@@ -23,6 +23,9 @@ Ext.define('Bsg.view.Viewport', {
                 margin: '0 0 0 20',
                 html: 'ed<span class="main_title">Sim</span>',
             }, '->', {
+                  xtype: 'label',
+                  html: 'квартал 1<span>анализ рынка</span>',
+            }, '->', {
                 xtype: 'button',
                 text: me.usernamedefault,
                 itemId: 'itemId_username',

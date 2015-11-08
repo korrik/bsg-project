@@ -1,6 +1,6 @@
 Ext.define('Bsg.view.main.MainChart',{
 	extend: 'Ext.Panel',
-
+	cls: 'grid-box',
 	xtype: 'mainchart',
 	alias: 'widget.MainChart',
 

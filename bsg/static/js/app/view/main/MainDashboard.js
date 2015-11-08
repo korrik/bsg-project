@@ -12,6 +12,7 @@ Ext.define('Bsg.view.main.MainDashboard',{
 
 	xtype: 'maindashboard',
 	alias: 'widget.MainDashboard',
+	cls: 'dashboard-area',
 
 	columnWidths: [
 		0.40,
@@ -21,7 +22,10 @@ Ext.define('Bsg.view.main.MainDashboard',{
 	parts:{
 		maingrid: {
 			viewTemplate: {
-				title: 'MainGrid',
+				title: 'Табличка',
+        collapsible:false,
+        draggable:false,
+        closable:false,
 				items:[{
 					xtype: 'maingrid',
 					itemId: 'itemId_mainGrid'
@@ -31,6 +35,9 @@ Ext.define('Bsg.view.main.MainDashboard',{
 		mainchart: {
 			viewTemplate: {
 				title: 'MainChart',
+				collapsible:false,
+        draggable:false,
+        closable:false,
 				items: [{
 					xtype: 'mainchart',
 					itemId: 'itemId_mainChart'
@@ -40,6 +47,9 @@ Ext.define('Bsg.view.main.MainDashboard',{
 		mainform: {
 			viewTemplate: {
 				title: 'MainForm',
+				collapsible:false,
+        draggable:false,
+        closable:false,
 				items: [{
 					xtype: 'mainform',
 					itemId: 'itemId_mainForm'
