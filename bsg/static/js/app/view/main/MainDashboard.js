@@ -13,6 +13,8 @@ Ext.define('Bsg.view.main.MainDashboard',{
 	xtype: 'maindashboard',
 	alias: 'widget.MainDashboard',
 
+	readOnly: true,
+
 	columnWidths: [
 		0.40,
 		0.60
