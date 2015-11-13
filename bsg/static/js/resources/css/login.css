@@ -105,3 +105,18 @@
   border: none !important;
   box-shadow: none !important;
 }
+
+
+.x-window-header-default .x-tool-img {
+  background-color: transparent;
+}
+
+.x-window-body-default{
+  font-family: 'Clear Sans';
+  font-size: 14px;
+}
+
+.popup .x-window-header-default {
+  color: #fff;
+  background: rgb(10, 180, 218);
+}

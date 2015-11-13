@@ -24,7 +24,6 @@ Ext.define('BsgMenu', {
 });
 
 Ext.define('Bsg.view.MenuPanel', {
-
     extend: 'Ext.panel.Panel',
     alias: 'widget.MenuPanel',
     requires: ['Ext.view.View', 'Ext.ux.form.ItemSelector'],
@@ -47,14 +46,14 @@ Ext.define('Bsg.view.MenuPanel', {
     createView: function(){
         Ext.define('MenuModel', {
             extend: 'Ext.data.Model',
-            fields: ['title', 'url', 'icon']
+            fields: ['title', 'url', 'icon'],
         });
 
         this.view = Ext.create('Ext.view.View', {
             autoScroll: true,
             store:  Ext.create('Ext.data.Store', {
                 model: 'MenuModel',
-                data: BsgMenu.tables
+                data: BsgMenu.tables,
             }),
             selModel: {
                 mode: 'SINGLE',

@@ -1,6 +1,6 @@
 Ext.define('Bsg.view.main.MainGrid',{
 	extend: 'Ext.grid.Panel',
-
+	cls: 'grid-box',
 	xtype: 'maingrid',
 	alias: 'widget.MainGrid',
 
@@ -15,6 +15,7 @@ Ext.define('Bsg.view.main.MainGrid',{
 
 		me.store = Ext.create('Ext.data.Store', {
 			storeId: 'simpsonsStore',
+			id: 'myid',
 			fields:[ 'name', 'email', 'phone'],
 			data: [
 				{ name: 'Lisa', email: 'lisa@simpsons.com', phone: '555-111-1224' },

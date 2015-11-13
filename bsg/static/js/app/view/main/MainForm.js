@@ -1,8 +1,12 @@
 Ext.define('Bsg.view.main.MainForm',{
 	extend: 'Ext.form.Panel',
-
+	cls: 'grid-box',
 	xtype: 'mainform',
 	alias: 'widget.MainForm',
+	border:false,
+  resizable:false,
+  draggable:false,
+  closable:false,
 
 	initComponent: function(){
 		var me = this;
@@ -20,7 +24,8 @@ Ext.define('Bsg.view.main.MainForm',{
 		}];
 
 		me.buttons = [{
-			text: 'Сохранить'
+			text: 'Сохранить',
+			cls: 'full-button',
 		}]
 
 		me.callParent();
