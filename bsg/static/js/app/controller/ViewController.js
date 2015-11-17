@@ -3,9 +3,11 @@ Ext.define('Bsg.controller.ViewController', {
 
     stores  : [],
     models  : [],
-    views   : ['MenuPanel', 'Viewport',
-    //'UserPanel'
-  ],
+    views   : [
+        'MenuPanel',
+        'Viewport',
+        'HelpPanel'
+    ],
 
     refs: [
         {
@@ -15,17 +17,14 @@ Ext.define('Bsg.controller.ViewController', {
     ],
 
     init    : function() {
-
-        this.control({
+        var me = this;
+        me.control({
             'MenuPanel' : {
-                itemselect: this.openContent
+                itemselect: me.openContent
             },
             'Viewport': {
-
+                onopenhelp: me.onOpenHelp
             },
-            /*'UserPanel': {
-
-            },*/
         });
     },
 
@@ -39,13 +38,22 @@ Ext.define('Bsg.controller.ViewController', {
         if (record) {
             this.getViewport().content.getLayout().setActiveItem(record.get('url'))
         }
+    },
 
-        //this.getContent().getLayout().setActiveItem(recods.get('url'));
+    onOpenHelp: function() {
+        var panel = Ext.create('Bsg.view.HelpPanel');
 
-        //var vp = Ext.ComponentQuery.query('Viewport')[0];
-        //var mainpanel = vp.down('#itemId_mainpanel');
-        //mainpanel.add({xtype: BsgMenu.getXTypeByUrl(url)});
-
+        Ext.create('Ext.window.Window', {
+            title: 'Описние системы',
+            layout: 'fit',
+            width: 800,
+            height: 600,
+            maximizable: true,
+            stateful: true,
+            constrain: true,
+            modal: true,
+            items: panel
+        }).show();
     }
 
 });

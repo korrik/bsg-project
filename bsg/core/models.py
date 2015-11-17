@@ -65,3 +65,150 @@ class UserSession(BaseBsgModel):
 
 	class Meta:
 		db_table = 'django_session_user'
+
+
+# Company models!
+
+class Partner(BaseBsgModel):
+	"""
+	Model Key Partners of Company
+	"""
+	name = models.TextField(verbose_name = 'Наименование ключевых партнеров', null=False, blank=False)
+
+	def __unicode__(self):
+		return self.name
+
+	class Meta:
+		db_table = 'partner'
+
+	@staticmethod
+	def action():
+		return 'Partner'
+
+class Activities(BaseBsgModel):
+	"""
+	Model Key Activities of Company
+	"""
+	name = models.TextField(verbose_name = 'Наименование ключевых видов деятельности', null=False, blank=False)
+
+	def __unicode__(self):
+		return self.name
+
+	class Meta:
+		db_table = 'activities'
+
+	@staticmethod
+	def action():
+		return 'Activities'
+
+class Costs(BaseBsgModel):
+	"""
+	Model Key Costs of Company
+	"""
+	name = models.TextField(verbose_name = 'Наименование ключевых издержок', null=False, blank=False)
+
+	def __unicode__(self):
+		return self.name
+
+	class Meta:
+		db_table = 'costs'
+
+	@staticmethod
+	def action():
+		return 'Costs'
+
+class Resources(BaseBsgModel):
+	"""
+	Model Key resources of Company
+	"""
+	name = models.TextField(verbose_name = 'Наименование ключевых ресурсов', null=False, blank=False)
+
+	def __unicode__(self):
+		return self.name
+
+	class Meta:
+		db_table = 'resources'
+
+	@staticmethod
+	def action():
+		return 'Resources'
+
+class SalesChannels(BaseBsgModel):
+	"""
+	Model Sales Channels of Company
+	"""
+	name = models.TextField(verbose_name = 'Наименование каналов сбыта', null=False, blank=False)
+
+	def __unicode__(self):
+		return self.name
+
+	class Meta:
+		db_table = 'saleschannels'
+
+	@staticmethod
+	def action():
+		return 'SalesChannels'
+
+class Offers(BaseBsgModel):
+	"""
+	Model evaluative Offers of Company
+	"""
+	name = models.TextField(verbose_name = 'Наименование ценностных предложений', null=False, blank=False)
+
+	def __unicode__(self):
+		return self.name
+
+	class Meta:
+		db_table = 'offers'
+
+	@staticmethod
+	def action():
+		return 'Offers'
+
+class Relationship(BaseBsgModel):
+	"""
+	Model Customer Relationship of Company
+	"""
+	name = models.TextField(verbose_name = 'Наименование взаимоотношений с клиентами', null=False, blank=False)
+
+	def __unicode__(self):
+		return self.name
+
+	class Meta:
+		db_table = 'relationship'
+
+	@staticmethod
+	def action():
+		return 'Relationship'
+
+class Stream(BaseBsgModel):
+	"""
+	Model Stream Income of Company
+	"""
+	name = models.TextField(verbose_name = 'Наименование потоков поступления доходов', null=False, blank=False)
+
+	def __unicode__(self):
+		return self.name
+
+	class Meta:
+		db_table = 'stream'
+
+	@staticmethod
+	def action():
+		return 'Stream'
+
+class Segments(BaseBsgModel):
+	"""
+	Model Segments of Company
+	"""
+	name = models.TextField(verbose_name = 'Наименование потребительских сегментов', null=False, blank=False)
+
+	def __unicode__(self):
+		return self.name
+
+	class Meta:
+		db_table = 'segments'
+
+	@staticmethod
+	def action():
+		return 'Segments'

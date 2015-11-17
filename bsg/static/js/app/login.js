@@ -27,13 +27,21 @@ Ext.onReady(function(){
             emptyText: 'Логин',
             cls: 'input',
             name: 'username',
-            allowBlank: false
+            allowBlank: false,
+            enableKeyEvents: true,
+            listeners: {
+                specialkey: onSubmitForm
+            }
         },{
             emptyText: 'Пароль',
             cls: 'input',
             name: 'password',
             allowBlank: false,
-            inputType: 'password'
+            inputType: 'password',
+            enableKeyEvents: true,
+            listeners: {
+                specialkey: onSubmitForm
+            }
         }],
 
         buttons: [{
@@ -60,14 +68,14 @@ Ext.onReady(function(){
                     });
                 }
             }
-        }, {
-          text: 'Регистрация',
-          formBind: false,
-          disabled: false,
-          cls: 'button-simple',
-          handler: function () {
-            window.location.href = '/registration.html'
-          }
+        },{
+            text: 'Регистрация',
+            formBind: false,
+            disabled: false,
+            cls: 'button-simple',
+            handler: function () {
+                window.location.href = '/registration.html'
+            }
         }]
     });
 
@@ -87,5 +95,25 @@ Ext.onReady(function(){
             items: [formLogin]
         }]
     }).show();
+
+    function onSubmitForm (field, e){
+        if (e.getKey() == e.ENTER) {
+            var form = field.up('form').getForm();
+            if (form.isValid()) {
+                form.submit({
+                    success: function(form, o) {
+                        window.location.href = '/main.html';
+                    },
+                    failure: function(form, o) {
+                        Ext.Msg.show({
+                            title: 'Ошибка',
+                            msg: 'Неправильные имя пользователя и/или пароль',
+                            cls: 'popup'
+                        });
+                    }
+                });
+            }
+        }
+    }
 
 });

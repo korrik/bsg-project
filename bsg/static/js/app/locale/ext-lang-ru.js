@@ -278,7 +278,7 @@ Ext.define("Ext.locale.ru.Component", {
 
 Ext.define('Ext.locale.ru.grid.RowEditor',{
     override: 'Ext.grid.RowEditor',
-    saveBtnText  : 'Изменить',
+    saveBtnText  : 'Сохранить',
     cancelBtnText: 'Отменить',
     errorsText: 'Ошибки',
     dirtyText: 'Вы должны сохранить или отменить изменения.',

@@ -130,8 +130,17 @@ opacity: 1;
 }
 
 .x-dashboard-column-first {
-  padding-right: 20px;
+  /*padding-right: 20px;*/
   padding-left: 15px;
+}
+
+.x-dashboard-column-last {
+  padding-right: 0px;
+}
+
+.x-dashboard-column {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .dashboard-area {
@@ -229,4 +238,27 @@ opacity: 1;
   border-radius: 0 3px 3px 0;
   border: 1px solid #fff;
   line-height: normal;
+}
+
+/*Icon action column record in grid*/
+.x-action-col-glyph {
+  font-size:18px;
+  line-height:16px;
+  color:#000000;
+  width:20px;
+  margin-right:2px;
+}
+.x-action-col-glyph:hover{
+  color:rgb(21, 127, 204)
+}
+
+.x-action-col-trash {
+  font-size:18px;
+  line-height:16px;
+  color:rgb(255, 0, 0);
+  width:20px;
+  margin-right:2px;
+}
+.x-action-col-trash:hover{
+  color:rgb(255, 0, 0)
 }

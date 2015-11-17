@@ -25,6 +25,13 @@ Ext.define('Bsg.view.Viewport', {
             }, '->', {
                   xtype: 'label',
                   html: '<div class="outer"><span>квартал 1</span><span>анализ рынка</span></div>',
+            },{
+                xtype: 'button',
+                glyph: 'xf059@FontAwesome',
+                tooltip: 'Описание квартала',
+                handler: function() {
+                    me.fireEvent('onopenhelp')
+                }
             }, '->', {
                 xtype: 'button',
                 text: me.usernamedefault,
@@ -42,8 +49,8 @@ Ext.define('Bsg.view.Viewport', {
                 scope: this,
                 text: 'Выйти',
                 handler: function () {
-                    Ext.MessageBox.confirm('Подтверждение', 'Вы уверены, что хотите выйти?', showResult);
-                        function showResult(btn){ if (btn == 'yes')  {
+                    Ext.MessageBox.confirm('Подтверждение', 'Вы уверены, что хотите выйти?', onLogOutUser);
+                        function onLogOutUser(btn){ if (btn == 'yes')  {
                             var request = null;
                             provider.methods.logout_user(request, function(resp){
                                 if (resp.success){
