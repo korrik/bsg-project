@@ -158,7 +158,6 @@ opacity: 1;
 .x-panel .x-panel-header-default-framed-top {
   background: #fff;
   border-radius: 0;
-  border-top: 3px solid rgba(41, 56, 70, 0.15);
   border-bottom: 1px solid #eee;
 }
 
