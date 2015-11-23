@@ -59,7 +59,7 @@ class UserSession(BaseBsgModel):
 	"""
 	Model associates session id with it's user
 	"""
-	session = models.ForeignKey(Session, null=False, blank=False, unique=True)
+	session = models.OneToOneField(Session, null=False, blank=False, unique=True)
 	user = models.ForeignKey(User, null=False, blank=False)
 	last_activity = models.DateTimeField(auto_now=True)
 
@@ -212,3 +212,48 @@ class Segments(BaseBsgModel):
 	@staticmethod
 	def action():
 		return 'Segments'
+
+class ModelProduct(BaseBsgModel):
+	"""
+	Model mail field product for version
+	"""
+	connect_module = models.TextField(verbose_name='Интернет-соединение', null=True, blank=True)
+	back_camera = models.TextField(verbose_name='Задняя камера', null=True, blank=True)
+	link_module = models.TextField(verbose_name='Модуль связи', null=True, blank=True)
+	display = models.TextField(verbose_name='Дисплей', null=True, blank=True)
+	touch_screen = models.TextField(verbose_name='Тачскрин', null=True, blank=True)
+	battery = models.TextField(verbose_name='Батарея', null=True, blank=True)
+	processor = models.TextField(verbose_name='Процессор', null=True, blank=True)
+	case = models.TextField(verbose_name='Корпус', null=True, blank=True)
+
+	def __unicode__(self):
+		return self.connect_module
+
+	class Meta:
+		db_table = 'modelproduct'
+
+	@staticmethod
+	def action():
+		return 'ModelProduct'
+
+
+
+class Product(BaseBsgModel):
+	"""
+	Model  Main Product
+	"""
+	name = models.TextField(verbose_name = 'Наименование модели', null=False, blank=False)
+	first = ForeignKeyExtended(ModelProduct, default_rel_fieldname='connect_module', null=True, blank=True, related_name='+')
+	second = ForeignKeyExtended(ModelProduct, default_rel_fieldname='back_camera', null=True, blank=True, related_name='+')
+	result = ForeignKeyExtended(ModelProduct, default_rel_fieldname='link_module', null=True, blank=True, related_name='+')
+
+
+	def __unicode__(self):
+		return self.name
+
+	class Meta:
+		db_table = 'product'
+
+	@staticmethod
+	def action():
+		return 'Product'

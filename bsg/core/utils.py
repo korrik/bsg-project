@@ -130,13 +130,14 @@ def save_m2m_fields(instance, data, exclude):
     instance.save()
 
 
-def save_instance(instance, data=None, exclude=None, include=None, lang=None, model=None):
+def save_instance(instance, data=None, exclude=None, include=None, model=None):
     """
     Retrieves data from QueryDict object ``data``, insert its into model instance ``instance`` and save instance.
     """
-
+    print data
     if 'id' in data: 
         if data['id'] != '' and data['id'] is not None:
+
             instance = model.objects.get(id=data['id'])
 
     fill_instance(instance, data, exclude, include)

@@ -93,6 +93,9 @@ Ext.define('Bsg.view.Viewport', {
                 },{
                     xtype: 'companycontainer',
                     itemId: 'itemId_companycontainer'
+                },{
+                    xtype: 'productcontainer',
+                    itemId: 'itemId_productcontainer'
                 }
             ]
         });
