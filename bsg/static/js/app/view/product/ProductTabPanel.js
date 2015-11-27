@@ -6,7 +6,8 @@ Ext.define('Bsg.view.product.ProductTabPanel',{
 	alias: 'widget.ProductTabPanel',
 
 	requires: [
-		'Bsg.view.product.ModelsGridForm'
+		'Bsg.view.product.ModelsGridForm',
+		'Bsg.view.product.RandDGrid'
 	],
 
 	initComponent: function(){
@@ -22,7 +23,13 @@ Ext.define('Bsg.view.product.ProductTabPanel',{
 				itemId: 'itemId_modelsGridForm'
 			}]
 		},{
-			title: 'R&D'
+			title: 'R&D',
+			layout: 'column',
+			items: [{
+				columnWidth: 1,
+				xtype: 'randdgrid',
+				itemId: 'itemId_randDGrid'
+			}]
 		},{
 			title: 'Завод + Магазин'
 		},{

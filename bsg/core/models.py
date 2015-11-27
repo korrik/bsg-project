@@ -257,3 +257,19 @@ class Product(BaseBsgModel):
 	@staticmethod
 	def action():
 		return 'Product'
+
+class RandD(BaseBsgModel):
+	# это поле заполняется при генерации данных
+	name = models.TextField(verbose_name='Наименование компонента ', null=False, blank=False)
+	time = models.IntegerField(verbose_name='Время разработки', null=True, blank=True)
+	price = models.IntegerField(verbose_name='Стоимость разработки', null=True, blank=True)
+
+	def __unicode__(self):
+		return self.name
+
+	class Meta:
+		db_table = 'randd'
+
+	@staticmethod
+	def action():
+		return 'RandD'

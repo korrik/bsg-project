@@ -320,3 +320,17 @@ opacity: 1;
   font-family: 'Clear Sans';
   font-size: 14px;
 }
+
+/*Статус бар в гриде!*/
+.grid-statusbar{
+  background-color: rgb(10, 180, 218);
+  height: 45px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.text-statusbar{
+  color: #000000;
+  font-weight: bold;
+  font-size: 16px;
+}

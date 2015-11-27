@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from extdirect.django.crud import ExtDirectCRUD
+from bsg.core.store import *
 
 
 class BsgExtDirectCRUD(ExtDirectCRUD):
@@ -9,8 +10,12 @@ class BsgExtDirectCRUD(ExtDirectCRUD):
         self.exclude_fields = exclude_fields
         super(BsgExtDirectCRUD, self).__init__(provider, action, model, form)
 
+    def direct_store(self):
+        return BsgDirectStore(self.model, metadata=self.metadata)
+
     def query(self, request, optional, **kw):
         qs = self.model.objects.filter(hidden=False)
+        # qs = self.model.objects.all()
         return qs
 
     def pre_update(self, request, data, optional_data=None):
@@ -37,3 +42,19 @@ class BsgExtDirectCRUD(ExtDirectCRUD):
         else:
             msg = res.get('message')
         return res
+
+    def load(self, request):
+        # Almost the same as 'read' action but here we call
+        # the serializer directly with a fixed metadata (different
+        # from the self.store). Besides, we assume that the load
+        # action should return a single record, so all the query
+        # options are not needed.
+        meta = self.direct_load_metadata
+        extdirect_data, optional_data = self.extract_load_data(request)
+        ok, msg = self.pre_load(extdirect_data, optional_data)
+        if ok:
+            queryset = self.model.objects.filter(**extdirect_data)
+            res = serialize('extdirect', queryset, meta=meta, single_cast=True, optional=optional_data)
+            return res
+        else:
+            return self.failure(msg)

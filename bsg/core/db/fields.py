@@ -1,6 +1,6 @@
 from django.db.models import ForeignKey, ManyToManyField, OneToOneField
 from django.db.models.fields import FieldDoesNotExist
-from extdirect.django import extfields
+from bsg.core import extfields
 
 
 def _check_default_rel_fieldname(fieldname, model):
