@@ -3,7 +3,7 @@ Ext.define('BsgMenu', {
     tables: [
         {title: 'Главная', icon: 'fa fa-home', url:'itemId_maincontainer', xtype: 'MainContainer'},
         {title: 'Компания', icon: 'fa fa-building-o',  url:'itemId_companycontainer', xtype: 'CompanyContainer'},
-        {title: 'Продукт', icon: 'fa fa-archive', url:'3', xtype: ''},
+        {title: 'Продукт', icon: 'fa fa-archive', url:'itemId_productcontainer', xtype: 'ProductContainer'},
         {title: 'Финансы', icon: 'fa fa-money', url:'4', xtype: ''},
         {title: 'Маркетинг', icon: 'fa fa-pie-chart', url:'5', xtype: ''},
         {title: 'HR', icon: 'fa fa-users', url:'6', xtype: ''},

@@ -28,12 +28,18 @@ REMOTE_METHOD_NAMESPACE = 'methods'
 
 user_editable_fields = ('username', 'first_name', 'last_name', 'email', 'password')
 
-
-def check_auth_post(request):
+# Проверка авторизации
+def check_auth(request):
     if not request.user.is_authenticated():
-        print 2
         return False
     return True
+
+# Проверка авторизации и метода POST
+def check_auth_post(request):
+    if not request.method == 'POST':
+        if not request.user.is_authenticated():
+            return False, dict(success=False, msg=u'Пользователь не авторизован')
+    return True, dict(success=True, msg='')
 
 def index(request):
     return render_to_response('index.html', context_instance=RequestContext(request))
@@ -41,7 +47,7 @@ def index(request):
 def main(request):
     # TODO: Проверка на авторизацию
 
-    if (check_auth_post(request)):
+    if (check_auth(request)):
         return render_to_response('main.html', context_instance=RequestContext(request))
     else:
         return render_to_response('login.html', context_instance=RequestContext(request))
@@ -131,6 +137,95 @@ def logout_user(request):
 def get_user(request):
     user = User.objects.get(username=request.user)
     return dict(success=True, username = user.username)
+
+def create_modelproduct(data):
+    mp_data = dict({'connect_module':data['connect_module'], 'back_camera':data['back_camera'],
+                   'link_module':data['link_module'], 'display':data['display'], 'touch_screen':data['touch_screen'],
+                   'battery':data['battery'] , 'processor':data['processor'], 'case':data['case']})
+    data.pop('connect_module')
+    data.pop('back_camera')
+    data.pop('link_module')
+    data.pop('display')
+    data.pop('touch_screen')
+    data.pop('battery')
+    data.pop('processor')
+    data.pop('case')
+
+    inst = save_instance(ModelProduct(), mp_data, None, None, ModelProduct)
+    data['first_id'] = inst.id
+    data['result_id'] = inst.id
+
+    return data
+
+def update_modelproduct(data):
+    mp_data = dict({'connect_module':data['first_fk_connect_module'], 'back_camera':data['first_fk_back_camera'],
+                   'link_module':data['first_fk_link_module'], 'display':data['first_fk_display'],
+                    'touch_screen':data['first_fk_touch_screen'], 'battery':data['first_fk_battery'] ,
+                    'processor':data['first_fk_processor'], 'case':data['first_fk_case']})
+    data.pop('first_fk_connect_module')
+    data.pop('first_fk_back_camera')
+    data.pop('first_fk_link_module')
+    data.pop('first_fk_display')
+    data.pop('first_fk_touch_screen')
+    data.pop('first_fk_battery')
+    data.pop('first_fk_processor')
+    data.pop('first_fk_case')
+
+    inst = save_instance(ModelProduct(), mp_data, None, None, ModelProduct)
+    data['first_id'] = inst.id
+    data['result_id'] = inst.id
+
+    return data
+
+@remoting(remotingProvider, action=REMOTE_METHOD_NAMESPACE, form_handler=True)
+def create_product(request):
+    ok, result = check_auth_post(request)
+    if not ok:
+        return result
+
+    user = request.user
+    success = False
+    msg = ''
+
+    data = dict(request.extdirect_post_data.items())
+
+    data = create_modelproduct(data)
+
+    try:
+        instance = save_instance(Product(), data, None, None, Product)
+        msg = u'Продукт {} успешно создан'.format(instance.name)
+        success = True
+    except Exception as e:
+        msg = exception_to_str(e)
+        logger.error(msg)
+    finally:
+        registry_event(user=user, action='create Product', result=success, msg=msg)
+        return dict(success=success, msg=msg)
+
+@remoting(remotingProvider, action=REMOTE_METHOD_NAMESPACE, form_handler=True)
+def update_product(request):
+    ok, result = check_auth_post(request)
+    if not ok:
+        return result
+
+    user = request.user
+    success = False
+    msg = ''
+
+    data = dict(request.extdirect_post_data.items())
+
+    data = update_modelproduct(data)
+
+    try:
+        instance = save_instance(Product(), data, None, None, Product)
+        msg = u'Продукт {} успешно изменен'.format(instance.name)
+        success = True
+    except Exception as e:
+        msg = exception_to_str(e)
+        logger.error(msg)
+    finally:
+        registry_event(user=user, action='update Product', result=success, msg=msg)
+        return dict(success=success, msg=msg)
 
 
 
