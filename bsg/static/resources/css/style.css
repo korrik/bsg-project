@@ -187,6 +187,7 @@ h1 {
   padding: 15px;
   margin: 30px 15px;
   transition: 0.3s;
+  min-height: 290px;
 }
 
 .single-feature:hover {
@@ -297,7 +298,7 @@ footer {
 footer p {
   color: #fff;
   padding-top: 15px;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 
@@ -342,6 +343,8 @@ footer p {
 .questions img {
   width: 100%;
   margin-top: 25px;
+  width: 1440px;
+  border: 1px solid #eee;
 }
 
 .questions h2 {
@@ -350,13 +353,12 @@ footer p {
 }
 
 .browser-bar {
-  background: linear-gradient(#fff 1%,#eef1f3 4%);
-  border-radius: .4em;
-
+  background: #eee;
 }
 
 .browser, .browser-bar {
-  border: 1px solid #d8dee0;
+  width: 706px;
+  border: 1px solid #eee;
   overflow: hidden;
   position: relative;
 }
