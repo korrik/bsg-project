@@ -273,3 +273,23 @@ class RandD(BaseBsgModel):
 	@staticmethod
 	def action():
 		return 'RandD'
+
+class PriceCountry(BaseBsgModel):
+	"""
+	Model Price open anything in country (CONSTAN)
+	"""
+
+	name = models.TextField(verbose_name='Название страны', null=True, blank=True)
+	factory = models.TextField(verbose_name='Цены за открытие завода', null=True, blank=True)
+	representation = models.TextField(verbose_name='Цены за открытие предстваительства', null=True, blank=True)
+	shop = models.TextField(verbose_name='Цены за открытие магазина', null=True, blank=True)
+
+	def __unicode__(self):
+		return self.name
+
+	class Meta:
+		db_table = 'pricecountry'
+
+	@staticmethod
+	def action():
+		return 'PriceCountry'
