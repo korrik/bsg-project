@@ -158,7 +158,6 @@ opacity: 1;
 .x-panel .x-panel-header-default-framed-top {
   background: #fff;
   border-radius: 0;
-  border-top: 3px solid rgba(41, 56, 70, 0.15);
   border-bottom: 1px solid #eee;
 }
 
@@ -168,7 +167,7 @@ opacity: 1;
 
 .x-panel-body-default-framed {
   border: 0;
-  padding: 10px;
+  padding: 7px 10px;
 }
 
 .x-column-header-last {
@@ -262,6 +261,8 @@ opacity: 1;
 .x-action-col-trash:hover{
   color:rgb(255, 0, 0)
 }
+<<<<<<< HEAD
+=======
 
 
 /*Vertical header column*/
@@ -333,4 +334,28 @@ opacity: 1;
   color: #000000;
   font-weight: bold;
   font-size: 16px;
+}
+>>>>>>> 854e9a04e8a27980b0a743181b1228aba6004ac4
+
+.x-panel-header-default-horizontal {
+  padding: 0;
+}
+
+.x-panel-header-default {
+  background: 0;
+  padding: 0;
+  border: 0;
+  padding-bottom: 10px;
+}
+
+.x-panel-header-title-default {
+  font-size: 14px;
+  font-weight: 500;
+  color: #2f4050;
+}
+
+.x-grid-with-row-lines .x-grid-item {
+  margin-top: 5px;
+  background: #ccc;
+  border: 0;
 }
