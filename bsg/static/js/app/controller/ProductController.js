@@ -1,27 +1,25 @@
 Ext.define('Bsg.controller.ProductController', {
 
-    extend	: 'Ext.app.Controller',
+    extend: 'Ext.app.Controller',
 
-    stores	: [
+    stores: [
         'ProductStore',
         'RandDStore'
     ],
 
-    models	: [
+    models: [
         'ProductModel',
         'RandDModel'
     ],
 
-    views	: [
+    views: [
         'product.ModelsGridForm',
         'product.RandDGrid'
     ],
-
-    init	: function() {
-        var me = this;
+    init: function () {
 
         this.control({
-            'ModelsGridForm':{
+            'ModelsGridForm': {
                 onresetform: this.onResetForm,
                 oncreateproduct: this.onCreateProduct,
                 onupdateproduct: this.onUpdateProduct,
@@ -36,11 +34,11 @@ Ext.define('Bsg.controller.ProductController', {
         });
     },
 
-    onCreateProduct: function(form){
+    onCreateProduct: function (form) {
         var me = this;
         form.getForm().submit({
             waitMsg: 'Создание...',
-            success: function(f, o){
+            success: function (f, o) {
                 Ext.Msg.show({
                     msg: o.result.msg,
                     buttons: Ext.Msg.OK,
@@ -51,7 +49,7 @@ Ext.define('Bsg.controller.ProductController', {
                 me.getStore('ProductStore').reload();
 
             },
-            failure: function(f, o){
+            failure: function (f, o) {
                 Ext.Msg.show({
                     msg: 'Ошибка:' + o.result.msg,
                     buttons: Ext.Msg.OK,
@@ -61,11 +59,11 @@ Ext.define('Bsg.controller.ProductController', {
         });
     },
 
-    onUpdateProduct: function(form){
+    onUpdateProduct: function (form) {
         var me = this;
         form.getForm().submit({
             waitMsg: 'Обновление...',
-            success: function(f, o){
+            success: function (f, o) {
                 Ext.Msg.show({
                     msg: o.result.msg,
                     buttons: Ext.Msg.OK,
@@ -76,7 +74,7 @@ Ext.define('Bsg.controller.ProductController', {
                 me.getStore('ProductStore').reload();
 
             },
-            failure: function(f, o){
+            failure: function (f, o) {
                 Ext.Msg.show({
                     msg: 'Ошибка:' + o.result.msg,
                     buttons: Ext.Msg.OK,
@@ -86,32 +84,32 @@ Ext.define('Bsg.controller.ProductController', {
         });
     },
 
-    onResetForm: function(form){
+    onResetForm: function (form) {
         form.getForm().reset();
     },
 
-    onCloseFormProduct: function(me, itemid){
+    onCloseFormProduct: function (me, itemid) {
         me.down('#' + itemid).hide();
     },
 
-    onViewFormProduct: function(me) {
+    onViewFormProduct: function (me) {
         me.down('#itemId_formUpdateProduct').hide();
         me.down('#itemId_formProduct').show();
     },
 
-    onViewUpdateFormProduct: function(me, record){
+    onViewUpdateFormProduct: function (me, record) {
         var form = me.down('#itemId_formUpdateProduct');
         form.loadRecord(record);
         me.down('#itemId_formProduct').hide();
         form.show();
     },
 
-    onChangeRandD: function(record){
+    onChangeRandD: function (record) {
         var me = this, time, value = record.get('time');
 
         if (value == 1) {
             time = 'first';
-        } else if(value == 2) {
+        } else if (value == 2) {
             time = 'second';
         } else if (value == 3) {
             time = 'third';
@@ -119,31 +117,31 @@ Ext.define('Bsg.controller.ProductController', {
         record.set({price: me.onGetPrice(record.get('name'), time)});
     },
 
-    onGetPrice: function(name, time) {
+    onGetPrice: function (name, time) {
         var result = '';
         Ext.define('Params', {
             extend: 'Ext.data.Model',
             fields: [
                 {name: 'name', type: 'string'},
-                {name: 'first',  type: 'int'},
-                {name: 'second',       type: 'int'},
-                {name: 'third',  type: 'int'}
+                {name: 'first', type: 'int'},
+                {name: 'second', type: 'int'},
+                {name: 'third', type: 'int'}
             ]
         });
-        var store = Ext.create('Ext.data.Store',{
+        var store = Ext.create('Ext.data.Store', {
             //fields: ['name', 'first', 'second', 'third'],
             model: 'Params',
-            data:[
-                {name:'Сверхскоростной Wifi+LTE', first:3500000, second:2400000, third:900000},
-                {name:'10мп камера', first:3500000, second:2000000, third:600000},
-                {name:'Retina дисплей', first:5000000, second:3200000, third:1500000},
-                {name:'5,0 Экран', first:2500000, second:1750000, third:500000},
-                {name:'2000 mah батарея', first:5200000, second:2800000, third:1400000},
-                {name:'4-х ядерный сверхскоростной процессор', first:6500000, second:3100000, third:1800000}
+            data: [
+                {name: 'Сверхскоростной Wifi+LTE', first: 3500000, second: 2400000, third: 900000},
+                {name: '10мп камера', first: 3500000, second: 2000000, third: 600000},
+                {name: 'Retina дисплей', first: 5000000, second: 3200000, third: 1500000},
+                {name: '5,0 Экран', first: 2500000, second: 1750000, third: 500000},
+                {name: '2000 mah батарея', first: 5200000, second: 2800000, third: 1400000},
+                {name: '4-х ядерный сверхскоростной процессор', first: 6500000, second: 3100000, third: 1800000}
             ]
         });
 
-        store.each(function(item){
+        store.each(function (item) {
             if (item.get('name') == name) {
                 result = item.get(time);
                 return false;
@@ -153,10 +151,10 @@ Ext.define('Bsg.controller.ProductController', {
         return result;
     },
 
-    onSetSumInvestments: function(grid){
+    onSetSumInvestments: function (grid) {
         var statusLabel = grid.down('#itemId_sumInvestments'),
             sum = 0;
-        grid.getStore().each(function(record){
+        grid.getStore().each(function (record) {
             sum = sum + record.get('price');
         });
         statusLabel.setText(sum + ',00 рублей');
