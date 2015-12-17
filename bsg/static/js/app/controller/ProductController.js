@@ -8,7 +8,8 @@ Ext.define('Bsg.controller.ProductController', {
         'PriceOpenStore',
         'PriceExpansionStore',
         'ShippingCostsStore',
-        'FactoryStore'
+        'FactoryStore',
+        'RepresentationStore'
     ],
 
     models: [
@@ -17,19 +18,27 @@ Ext.define('Bsg.controller.ProductController', {
         'PriceOpenModel',
         'PriceExpansionModel',
         'ShippingCostsModel',
-        'FactoryModel'
+        'FactoryModel',
+        'RepresentationModel'
     ],
 
     views: [
         'product.ModelsGridForm',
         'product.RandDGrid',
-        'product.factory.FactoryPanel'
+        'product.factory.FactoryPanel',
+        'product.factory.RepresentationGrid',
     ],
 
     refs: [
         {
             ref: 'FactoryPanel',
             selector: 'factorypanel'
+        },{
+            ref: 'RepresentationForm',
+            selector: 'representationform'
+        },{
+            ref: 'RepresentationGrid',
+            selector: 'representationgrid'
         }
     ],
     init: function () {
@@ -50,6 +59,12 @@ Ext.define('Bsg.controller.ProductController', {
             'FactoryPanel': {
                 onbuildfactory: this.onBuildFactory,
                 onbeforeviewfactorypanel: this.onBeforeViewFactoryPanel
+            },
+            'RepresentationGrid': {
+                onopenrepresentation: this.onOpenRepresentation
+            },
+            'RepresentationForm':{
+                oncreaterepresentation: this.onCreateRepresentation
             }
         });
     },
@@ -181,8 +196,8 @@ Ext.define('Bsg.controller.ProductController', {
 
     onBuildFactory: function(){
         var me = this,
-            fp = this.getFactoryPanel(),
-            form = fp.getLayout().getActiveItem().getForm().submit({
+            fp = this.getFactoryPanel();
+            fp.getLayout().getActiveItem().getForm().submit({
                 waitMsg: 'Идет сохранение...',
                 success: function(form, o){
                     Ext.Msg.show({
@@ -190,10 +205,9 @@ Ext.define('Bsg.controller.ProductController', {
                         buttons: Ext.Msg.OK,
                         icon: Ext.MessageBox.INFO
                     });
-                    me.getStore('FactoryStore').load(function(records, operration, success){
-                        fp.down('#step_viewfactory').getForm().loadRecord(records[0])
+                    me.getStore('FactoryStore').load(function(){
+                        me.onBeforeViewFactoryPanel();
                     });
-                    fp.getLayout().setActiveItem(fp.getLayout().getNext());
 
                 },
                 failure: function(form, o){
@@ -209,14 +223,81 @@ Ext.define('Bsg.controller.ProductController', {
     onBeforeViewFactoryPanel: function(){
         var me = this,
             fp = this.getFactoryPanel();
-        console.log(me.getStore('FactoryStore'))
         if (me.getStore('FactoryStore').count() == 0){
             fp.getLayout().getActiveItem().getForm().loadRecord(Ext.create('Bsg.model.FactoryModel'))
         } else {
             fp.getLayout().setActiveItem(fp.getLayout().getNext());
             var rec = me.getStore('FactoryStore').first();
             fp.getLayout().getActiveItem().getForm().loadRecord(rec);
+
+            me.getRepresentationGrid().show();
         }
+    },
+
+    onOpenRepresentation: function(){
+        if (this.getStore('RepresentationStore').count() > 5) {
+            Ext.Msg.show({
+                msg: 'Уже открыто максимальное кол-во представительств!',
+                buttons: Ext.Msg.OK,
+                icon: Ext.MessageBox.ERROR
+            });
+            return false;
+        }
+        var form = Ext.create('Bsg.view.product.factory.RepresentationForm',{
+            itemId: 'itemId_representationForm'
+        });
+
+        var window = Ext.create('Ext.window.Window', {
+            title: 'Открытие нового представительства',
+            layout: 'fit',
+            width: 350,
+            height: 200,
+            stateful: true,
+            constrain: true,
+            modal: true,
+            items: form
+        }).show();
+    },
+
+    onCreateRepresentation: function(form){
+        var me = this,
+            flag = false,
+            value = form.down('#itemId_countrywhereopen').getSelection().get('name');
+
+        me.getStore('RepresentationStore').each(function(item){
+            if (value == item.get('country')){
+                flag = true;
+                return false;
+            }
+        });
+
+        if (flag) {
+            Ext.Msg.show({
+                msg: 'Представительство в выбраной стране уже открыто!',
+                buttons: Ext.Msg.OK,
+                icon: Ext.MessageBox.ERROR
+            });
+            return false;
+        }
+            form.getForm().submit({
+                waitMsg: 'Идет сохранение...',
+                success: function(f, o){
+                    Ext.Msg.show({
+                        msg: 'Представительство успешно открыто!',
+                        buttons: Ext.Msg.OK,
+                        icon: Ext.MessageBox.INFO
+                    });
+                    me.getStore('RepresentationStore').load();
+                    form.up().close();
+                },
+                failure: function(form, o){
+                    Ext.Msg.show({
+                        msg: 'Ошибка: ' + o.result.msg,
+                        buttons: Ext.Msg.OK,
+                        icon: Ext.MessageBox.ERROR
+                    });
+                }
+            });
     }
 
 });

@@ -352,3 +352,22 @@ class Factory(BaseBsgModel):
 	@staticmethod
 	def action():
 		return 'Factory'
+
+class Representation(BaseBsgModel):
+	"""
+	model representation
+	"""
+
+	country = models.TextField(verbose_name='Название страны', null=True, blank=True)
+	price = models.IntegerField(verbose_name='Цена открытия представительства в стране', null=True, blank=True)
+	status = models.TextField(verbose_name='Статус предствительства', null=True, blank=True)
+
+	def __unicode__(self):
+		return self.name
+
+	class Meta:
+		db_table = 'representation'
+
+	@staticmethod
+	def action():
+		return 'Representation'

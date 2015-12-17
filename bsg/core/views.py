@@ -239,9 +239,7 @@ def build_factory(request):
     data = dict(request.extdirect_post_data.items())
 
     try:
-        print 1
         instance = save_instance(Factory(), data, None, None, Factory)
-        print 2
         msg = u'Завод успешно построен'
         success = True
     except Exception as e:
@@ -252,4 +250,26 @@ def build_factory(request):
         return dict(success=success, msg=msg)
 
 
+@remoting(remotingProvider, action=REMOTE_METHOD_NAMESPACE, form_handler=True)
+def open_representation(request):
+    ok, result = check_auth_post(request)
+    if not ok:
+        return result
+
+    user = request.user
+    success = False
+    msg = ''
+
+    data = dict(request.extdirect_post_data.items())
+
+    try:
+        instance = save_instance(Representation(), data, None, None, Representation)
+        msg = u'Представительство успешно открыто!'
+        success = True
+    except Exception as e:
+        msg = exception_to_str(e)
+        logger.error(msg)
+    finally:
+        registry_event(user=user, action='Open representation', result=success, msg=msg)
+        return dict(success=success, msg=msg)
 

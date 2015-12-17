@@ -7,7 +7,8 @@ Ext.define('Bsg.view.product.factory.FactoryAndShopPanel',{
         'Bsg.view.product.factory.PriceOpenGrid',
         'Bsg.view.product.factory.PriceExpansionGrid',
         'Bsg.view.product.factory.ShippingCostsGrid',
-        'Bsg.view.product.factory.FactoryPanel'
+        'Bsg.view.product.factory.FactoryPanel',
+        'Bsg.view.product.factory.RepresentationGrid'
     ],
 
     autoScroll: true,
@@ -34,6 +35,11 @@ Ext.define('Bsg.view.product.factory.FactoryAndShopPanel',{
             xtype: 'factorypanel',
             columnWidth: 0.3,
             padding: '10 0 0 20'
+        },{
+            xtype: 'representationgrid',
+            columnWidth: 0.3,
+            padding: '10 0 0 20',
+            hidden: true
         }];
 
         me.callParent()
