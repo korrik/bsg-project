@@ -19,3 +19,10 @@ class Command(BaseCommand):
 		r = RandD()
 		r.name = item
 		r.save()
+
+	p = PriceCountry()
+	p.name = 'США'
+	p.factory = 8500000
+	p.representation = 4250000
+	p.shop = 2125000
+	p.save()

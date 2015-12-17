@@ -7,7 +7,8 @@ Ext.define('Bsg.view.product.ProductTabPanel',{
 
 	requires: [
 		'Bsg.view.product.ModelsGridForm',
-		'Bsg.view.product.RandDGrid'
+		'Bsg.view.product.RandDGrid',
+		'Bsg.view.product.factory.FactoryAndShopPanel'
 	],
 
 	initComponent: function(){
@@ -24,6 +25,7 @@ Ext.define('Bsg.view.product.ProductTabPanel',{
 			}]
 		},{
 			title: 'R&D',
+			autoScroll: true,
 			layout: 'column',
 			items: [{
 				columnWidth: 1,
@@ -31,7 +33,12 @@ Ext.define('Bsg.view.product.ProductTabPanel',{
 				itemId: 'itemId_randDGrid'
 			}]
 		},{
-			title: 'Завод + Магазин'
+			title: 'Завод + Магазин',
+			layout: 'fit',
+			items: [{
+				xtype: 'factoryandshoppanel',
+				itemId: 'itemId_factoryAndShopPanel'
+			}]
 		},{
 			title: 'Производство'
 		}];

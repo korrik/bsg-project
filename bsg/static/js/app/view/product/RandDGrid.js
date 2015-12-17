@@ -2,12 +2,13 @@ Ext.define('Bsg.view.product.RandDGrid',{
 	extend: 'Ext.grid.Panel',
 	xtype: 'randdgrid',
 	alias: 'widget.RandDGrid',
+    autoScroll: true,
 
 	initComponent: function(){
 		var me = this;
 
         me.title = 'Разработки новых компонентов и функций';
-        me.height = '100%',
+        me.height = '100%';
 		me.columns = [{
             menuDisabled : true,
 			text: 'Компонент',

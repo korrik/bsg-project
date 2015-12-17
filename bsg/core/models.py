@@ -276,13 +276,13 @@ class RandD(BaseBsgModel):
 
 class PriceCountry(BaseBsgModel):
 	"""
-	Model Price open anything in country (CONSTAN)
+	Model Price open anything in country (CONSTANT)
 	"""
 
 	name = models.TextField(verbose_name='Название страны', null=True, blank=True)
-	factory = models.TextField(verbose_name='Цены за открытие завода', null=True, blank=True)
-	representation = models.TextField(verbose_name='Цены за открытие предстваительства', null=True, blank=True)
-	shop = models.TextField(verbose_name='Цены за открытие магазина', null=True, blank=True)
+	factory = models.IntegerField(verbose_name='Цены за открытие завода', null=True, blank=True)
+	representation = models.IntegerField(verbose_name='Цены за открытие предстваительства', null=True, blank=True)
+	shop = models.IntegerField(verbose_name='Цены за открытие магазина', null=True, blank=True)
 
 	def __unicode__(self):
 		return self.name
@@ -293,3 +293,62 @@ class PriceCountry(BaseBsgModel):
 	@staticmethod
 	def action():
 		return 'PriceCountry'
+
+class PriceExpansion(BaseBsgModel):
+	"""
+	Model Price expansion anything in country (CONSTANT)
+	"""
+
+	power = models.IntegerField(verbose_name='Мощность (за квартал)', null=True, blank=True)
+	price = models.IntegerField(verbose_name='Стоимость', null=True, blank=True)
+
+
+	def __unicode__(self):
+		return self.name
+
+	class Meta:
+		db_table = 'priceexpansion'
+
+	@staticmethod
+	def action():
+		return 'PriceExpansion'
+
+class ShippingCosts(BaseBsgModel):
+	"""
+	Model shipping costs to country
+	"""
+	name = models.TextField(verbose_name='Название страны', null=True, blank=True)
+	country_one = models.IntegerField(verbose_name='Страна 1', null=True, blank=True)
+	country_two = models.IntegerField(verbose_name='Страна 2', null=True, blank=True)
+	country_three = models.IntegerField(verbose_name='Страна 3', null=True, blank=True)
+	country_four = models.IntegerField(verbose_name='Страна 4', null=True, blank=True)
+	country_five = models.IntegerField(verbose_name='Страна 5', null=True, blank=True)
+
+
+	def __unicode__(self):
+		return self.name
+
+	class Meta:
+		db_table = 'shippingcosts'
+
+	@staticmethod
+	def action():
+		return 'ShippingCosts'
+
+class Factory(BaseBsgModel):
+	"""
+	Model Factory
+	"""
+	country = models.TextField(verbose_name='Название страны', null=True, blank=True)
+	price = models.IntegerField(verbose_name='Цена открытия завода в стране', null=True, blank=True)
+	power = models.IntegerField(verbose_name='Мощность завода (начальная 5000)', null=True, blank=True)
+
+	def __unicode__(self):
+		return self.name
+
+	class Meta:
+		db_table = 'factory'
+
+	@staticmethod
+	def action():
+		return 'Factory'

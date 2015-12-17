@@ -18,7 +18,6 @@ from extdirect.django.decorators import remoting
 from django.forms.models import model_to_dict
 
 from django.contrib import auth
-from bsg.core.utils import registry_event
 
 from django.db.models import Q
 
@@ -227,6 +226,30 @@ def update_product(request):
         registry_event(user=user, action='update Product', result=success, msg=msg)
         return dict(success=success, msg=msg)
 
+@remoting(remotingProvider, action=REMOTE_METHOD_NAMESPACE, form_handler=True)
+def build_factory(request):
+    ok, result = check_auth_post(request)
+    if not ok:
+        return result
+
+    user = request.user
+    success = False
+    msg = ''
+
+    data = dict(request.extdirect_post_data.items())
+
+    try:
+        print 1
+        instance = save_instance(Factory(), data, None, None, Factory)
+        print 2
+        msg = u'Завод успешно построен'
+        success = True
+    except Exception as e:
+        msg = exception_to_str(e)
+        logger.error(msg)
+    finally:
+        registry_event(user=user, action='Build factory', result=success, msg=msg)
+        return dict(success=success, msg=msg)
 
 
 

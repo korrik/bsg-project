@@ -4,17 +4,33 @@ Ext.define('Bsg.controller.ProductController', {
 
     stores: [
         'ProductStore',
-        'RandDStore'
+        'RandDStore',
+        'PriceOpenStore',
+        'PriceExpansionStore',
+        'ShippingCostsStore',
+        'FactoryStore'
     ],
 
     models: [
         'ProductModel',
-        'RandDModel'
+        'RandDModel',
+        'PriceOpenModel',
+        'PriceExpansionModel',
+        'ShippingCostsModel',
+        'FactoryModel'
     ],
 
     views: [
         'product.ModelsGridForm',
-        'product.RandDGrid'
+        'product.RandDGrid',
+        'product.factory.FactoryPanel'
+    ],
+
+    refs: [
+        {
+            ref: 'FactoryPanel',
+            selector: 'factorypanel'
+        }
     ],
     init: function () {
 
@@ -30,6 +46,10 @@ Ext.define('Bsg.controller.ProductController', {
             'RandDGrid': {
                 onchangetimerand: this.onChangeRandD,
                 onsetsuminvestments: this.onSetSumInvestments
+            },
+            'FactoryPanel': {
+                onbuildfactory: this.onBuildFactory,
+                onbeforeviewfactorypanel: this.onBeforeViewFactoryPanel
             }
         });
     },
@@ -129,7 +149,6 @@ Ext.define('Bsg.controller.ProductController', {
             ]
         });
         var store = Ext.create('Ext.data.Store', {
-            //fields: ['name', 'first', 'second', 'third'],
             model: 'Params',
             data: [
                 {name: 'Сверхскоростной Wifi+LTE', first: 3500000, second: 2400000, third: 900000},
@@ -158,6 +177,46 @@ Ext.define('Bsg.controller.ProductController', {
             sum = sum + record.get('price');
         });
         statusLabel.setText(sum + ',00 рублей');
+    },
+
+    onBuildFactory: function(){
+        var me = this,
+            fp = this.getFactoryPanel(),
+            form = fp.getLayout().getActiveItem().getForm().submit({
+                waitMsg: 'Идет сохранение...',
+                success: function(form, o){
+                    Ext.Msg.show({
+                        msg: 'Завод успешно построен!',
+                        buttons: Ext.Msg.OK,
+                        icon: Ext.MessageBox.INFO
+                    });
+                    me.getStore('FactoryStore').load(function(records, operration, success){
+                        fp.down('#step_viewfactory').getForm().loadRecord(records[0])
+                    });
+                    fp.getLayout().setActiveItem(fp.getLayout().getNext());
+
+                },
+                failure: function(form, o){
+                    Ext.Msg.show({
+                        msg: 'Ошибка: ' + o.result.msg,
+                        buttons: Ext.Msg.OK,
+                        icon: Ext.MessageBox.ERROR
+                    });
+                }
+            });
+    },
+
+    onBeforeViewFactoryPanel: function(){
+        var me = this,
+            fp = this.getFactoryPanel();
+        console.log(me.getStore('FactoryStore'))
+        if (me.getStore('FactoryStore').count() == 0){
+            fp.getLayout().getActiveItem().getForm().loadRecord(Ext.create('Bsg.model.FactoryModel'))
+        } else {
+            fp.getLayout().setActiveItem(fp.getLayout().getNext());
+            var rec = me.getStore('FactoryStore').first();
+            fp.getLayout().getActiveItem().getForm().loadRecord(rec);
+        }
     }
 
 });
