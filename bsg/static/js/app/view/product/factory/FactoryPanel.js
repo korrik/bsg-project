@@ -11,6 +11,18 @@ Ext.define('Bsg.view.product.factory.FactoryPanel',{
         var me = this;
         me.layout = 'card';
         me.title = 'Завод';
+        me.tools = [{
+            type: 'up',
+            tooltip: 'Увеличись мощность',
+            handler: function(){
+                me.fireEvent('onfactorypowerup')
+            },
+            itemId: 'itemId_toolpowerup',
+            hidden: true
+        },{
+			type: 'help',
+			tooltip: 'Сюда подсказку'
+		}];
         me.items = [{
             itemId: 'step_formfactory',
             layout: 'anchor',
@@ -75,18 +87,22 @@ Ext.define('Bsg.view.product.factory.FactoryPanel',{
                 layout: 'anchor'
             },
             items: [{
+                xtype: 'numberfield',
+                name: 'id',
+                itemId: 'id_factory',
+                hidden: true
+            },{
                 xtype: 'displayfield',
                 name: 'country',
                 fieldLabel: 'Страна'
             },{
                 xtype: 'displayfield',
                 name: 'price',
-                labelWidth: 170,
-                fieldLabel: 'Стоимость постройки (руб)'
+                fieldLabel: 'Затраты (руб)'
             },{
                 xtype: 'displayfield',
                 name: 'power',
-                labelWidth: 140,
+                labelWidth: 120,
                 fieldLabel: 'Мощность завода'
             }]
 

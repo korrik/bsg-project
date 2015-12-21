@@ -19,19 +19,22 @@ Ext.define('Bsg.view.product.factory.PriceOpenGrid',{
 			dataIndex: 'factory',
             menuDisabled : true,
 			flex: 1,
-			sortable: false
+			sortable: false,
+			renderer: function(v){if (v) { return v + ',00 рублей'} else {return ''}}
 		},{
 			text: 'Представительство',
 			dataIndex: 'representation',
             menuDisabled : true,
 			flex: 1,
-			sortable: false
+			sortable: false,
+			renderer: function(v){if (v) { return v + ',00 рублей'} else {return ''}}
 		},{
 			text: 'Магазин',
 			dataIndex: 'shop',
             menuDisabled : true,
 			flex: 1,
-			sortable: false
+			sortable: false,
+			renderer: function(v){if (v) { return v + ',00 рублей'} else {return ''}}
 		}];
 		me.store = 'PriceOpenStore';
 

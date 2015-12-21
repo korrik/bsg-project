@@ -19,7 +19,8 @@ Ext.define('Bsg.view.product.factory.PriceExpansionGrid',{
 			dataIndex: 'price',
             menuDisabled : true,
 			flex: 1,
-			sortable: false
+			sortable: false,
+			renderer: function(v){if (v) { return v + ',00 рублей'} else {return ''}}
 		}];
 		me.store = 'PriceExpansionStore';
 

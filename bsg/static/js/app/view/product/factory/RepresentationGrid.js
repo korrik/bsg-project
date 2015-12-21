@@ -4,6 +4,11 @@ Ext.define('Bsg.view.product.factory.RepresentationGrid',{
 	xtype: 'representationgrid',
 	alias: 'widget.RepresentationGrid',
 
+	viewConfig: {
+        emptyText: 'Ниодно представительство пока не открыто!',
+		deferEmptyText: false
+	},
+
 	initComponent: function(){
 		var me = this;
 
@@ -17,7 +22,14 @@ Ext.define('Bsg.view.product.factory.RepresentationGrid',{
 			text: 'Стоимость открытия',
 			dataIndex: 'price',
 			flex: 1,
-            menuDisabled : true
+            menuDisabled : true,
+			renderer: function(v){
+                if (v) {
+                   return v + ',00 рублей';
+                } else {
+                    return '';
+                }
+            }
 		}];
 		me.store = 'RepresentationStore';
 

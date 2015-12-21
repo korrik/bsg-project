@@ -24,6 +24,6 @@ BsgExtDirectCRUD(remotingProvider, models.PriceExpansion.action(), models.PriceE
 BsgExtDirectCRUD(remotingProvider, models.ShippingCosts.action(), models.ShippingCosts)
 BsgExtDirectCRUD(remotingProvider, models.Factory.action(), models.Factory)
 BsgExtDirectCRUD(remotingProvider, models.Representation.action(), models.Representation)
-# BsgExtDirectCRUD(remotingProvider, models.PriceCountry.action(), models.PriceCountry)
+BsgExtDirectCRUD(remotingProvider, models.Shop.action(), models.Shop)
 # BsgExtDirectCRUD(remotingProvider, models.PriceCountry.action(), models.PriceCountry)
 # BsgExtDirectCRUD(remotingProvider, models.PriceCountry.action(), models.PriceCountry)

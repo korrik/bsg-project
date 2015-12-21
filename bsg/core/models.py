@@ -304,7 +304,7 @@ class PriceExpansion(BaseBsgModel):
 
 
 	def __unicode__(self):
-		return self.name
+		return self.power
 
 	class Meta:
 		db_table = 'priceexpansion'
@@ -344,7 +344,7 @@ class Factory(BaseBsgModel):
 	power = models.IntegerField(verbose_name='Мощность завода (начальная 5000)', null=True, blank=True)
 
 	def __unicode__(self):
-		return self.name
+		return self.country
 
 	class Meta:
 		db_table = 'factory'
@@ -363,7 +363,7 @@ class Representation(BaseBsgModel):
 	status = models.TextField(verbose_name='Статус предствительства', null=True, blank=True)
 
 	def __unicode__(self):
-		return self.name
+		return self.country
 
 	class Meta:
 		db_table = 'representation'
@@ -371,3 +371,22 @@ class Representation(BaseBsgModel):
 	@staticmethod
 	def action():
 		return 'Representation'
+
+class Shop(BaseBsgModel):
+	"""
+	Model Shop!
+	"""
+	name = models.TextField(verbose_name='Название магазина', null=True, blank=True)
+	country = models.TextField(verbose_name='Название страны', null=True, blank=True)
+	price = models.IntegerField(verbose_name='Цена открытия магазина в стране', null=True, blank=True)
+	people = models.IntegerField(verbose_name='Кол-во сотрудников в магазине')
+
+	def __unicode__(self):
+		return self.name
+
+	class Meta:
+		db_table = 'shop'
+
+	@staticmethod
+	def action():
+		return 'Shop'

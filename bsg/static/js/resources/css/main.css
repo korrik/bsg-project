@@ -333,6 +333,12 @@ opacity: 1;
   font-size: 16px;
 }
 
+.text-statusbar-shop{
+  color: #000000;
+  font-weight: bold;
+  font-size: 12px;
+}
+
 
 .x-panel-header-default-horizontal {
   padding: 0;

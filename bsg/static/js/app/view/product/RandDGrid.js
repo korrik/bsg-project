@@ -41,7 +41,6 @@ Ext.define('Bsg.view.product.RandDGrid',{
                 } else {
                     return '';
                 }
-
             }
 		}];
 		me.store = 'RandDStore';

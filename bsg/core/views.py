@@ -273,3 +273,51 @@ def open_representation(request):
         registry_event(user=user, action='Open representation', result=success, msg=msg)
         return dict(success=success, msg=msg)
 
+@remoting(remotingProvider, action=REMOTE_METHOD_NAMESPACE, form_handler=True)
+def open_shop(request):
+    ok, result = check_auth_post(request)
+    if not ok:
+        return result
+
+    user = request.user
+    success = False
+    msg = ''
+
+    data = dict(request.extdirect_post_data.items())
+
+    try:
+        instance = save_instance(Shop(), data, None, None, Shop)
+        msg = u'Магазин успешно открыт!'
+        success = True
+    except Exception as e:
+        msg = exception_to_str(e)
+        logger.error(msg)
+    finally:
+        registry_event(user=user, action='Open shop', result=success, msg=msg)
+        return dict(success=success, msg=msg)
+
+@remoting(remotingProvider, action=REMOTE_METHOD_NAMESPACE, form_handler=True)
+def factory_power_up(request):
+    ok, result = check_auth_post(request)
+    if not ok:
+        return result
+
+    user = request.user
+    success = False
+    msg = ''
+
+    data = dict(request.extdirect_post_data.items())
+
+    try:
+        instance = Factory.objects.get(id=data['id_factory'])
+        instance.power = instance.power + int(data['power'])
+        instance.price = instance.price + int(data['price'])
+        instance.save()
+        msg = u'Мощность завода увеличена!'
+        success = True
+    except Exception as e:
+        msg = exception_to_str(e)
+        logger.error(msg)
+    finally:
+        registry_event(user=user, action='Power Up factory', result=success, msg=msg)
+        return dict(success=success, msg=msg)
